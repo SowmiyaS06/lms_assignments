@@ -4,6 +4,7 @@ app_publisher = "Sowmiya"
 app_description = "Practice app for learning frappe"
 app_email = "sowmiyaselvaraj9025@gmail.com"
 app_license = "mit"
+app_include_js = "custom_desk.bundle.js"
 
 # Apps
 # ------------------
@@ -246,6 +247,7 @@ app_license = "mit"
 
 # Automatically update python controller files with type annotations for this app.
 # export_python_type_annotations = True
+export_python_type_annotations = True
 
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs

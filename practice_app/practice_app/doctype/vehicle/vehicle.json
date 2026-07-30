@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "field:vehicle_number",
+ "creation": "2026-07-23 11:45:02.051822",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicles_section",
+  "vehicle_number",
+  "customer_name",
+  "vehicle_type",
+  "brands",
+  "model",
+  "fuel_type",
+  "manufacturing_year",
+  "registration_date",
+  "status"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicles_section",
+   "fieldtype": "Section Break",
+   "label": "Vehicles"
+  },
+  {
+   "fieldname": "vehicle_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Vehicle Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vehicle_type",
+   "fieldtype": "Select",
+   "label": "Vehicle Type",
+   "options": "Car\nBike\nBus\nTruck\nVan"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model"
+  },
+  {
+   "fieldname": "fuel_type",
+   "fieldtype": "Select",
+   "label": "Fuel Type",
+   "options": "Petrol\nDiesel\nElectric Hybrid"
+  },
+  {
+   "fieldname": "manufacturing_year",
+   "fieldtype": "Int",
+   "label": "Manufacturing Year"
+  },
+  {
+   "fieldname": "registration_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Registration Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nInactive",
+   "reqd": 1
+  },
+  {
+   "fieldname": "brands",
+   "fieldtype": "Select",
+   "label": "Brands",
+   "options": "Toyota\nHonda\nHyundai\nSuzuki\nTata\nBMW\nAudi"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-07-29 11:00:51.478761",
+ "modified_by": "Administrator",
+ "module": "Practice App",
+ "name": "Vehicle",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "vehicle_number"
+}
