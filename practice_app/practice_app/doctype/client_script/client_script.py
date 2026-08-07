@@ -13,9 +13,7 @@ class Client_Script(Document):
 
     if TYPE_CHECKING:
         from frappe.types import DF
-        from practice_app.practice_app.doctype.project_details.project_details import (
-            ProjectDetails,
-        )
+        from practice_app.practice_app.doctype.project_details.project_details import ProjectDetails
 
         age: DF.Int
         amended_from: DF.Link | None
@@ -38,11 +36,15 @@ class Client_Script(Document):
         remarks: DF.SmallText | None
         resume: DF.Attach | None
         salary: DF.Currency
-        status: DF.Literal["Active", "Inactive"]
+        status: DF.Literal["Inactive", "Active"]
         total_salary: DF.Currency
-
     # end: auto-generated types
 
     @frappe.whitelist()
     def calculate_bonus(self):
         return self.salary * 0.10
+    @frappe.whitelist()
+    def activate_employee(self):
+        self.status="Active"
+        self.save()
+    

@@ -41,26 +41,26 @@ frappe.ui.form.on("Client_Script", {
     }
 });
 
-frappe.ui.form.on("Client_Script", {
-    refresh(frm) {
+// frappe.ui.form.on("Client_Script", {
+//     refresh(frm) {
 
-        frm.add_custom_button("Calculate Salary", function () {
+//         frm.add_custom_button("Calculate Salary", function () {
 
-            let total = (frm.doc.salary || 0) + (frm.doc.bonus || 0);
+//             let total = (frm.doc.salary || 0) + (frm.doc.bonus || 0);
 
-            frm.set_value("total_salary", total);
+//             frm.set_value("total_salary", total);
 
-        });
+//         });
 
-    }
-});
+//     }
+// });
 
 frappe.ui.form.on("Client_Script", {
     onload_post_render(frm) {
 
         frm.set_intro(
             "Welcome! Please fill in all employee details.",
-            "blue"
+            "red"
         );
 
     }
@@ -336,24 +336,24 @@ frappe.ui.form.on("Client_Script", {
 //     }
 // });
 
-frappe.ui.form.on("Client_Script", {
-    refresh(frm) {
+// frappe.ui.form.on("Client_Script", {
+//     refresh(frm) {
 
-        frm.add_custom_button("Add Default Project", function () {
+//         frm.add_custom_button("Add Default Project", function () {
 
-            let row = frm.add_child("projects");
+//             let row = frm.add_child("projects");
 
-            row.project_name = "ERP Development";
-            row.hours = 8;
-            row.cost = 4000;
-            row.status = "Pending";
+//             row.project_name = "ERP Development";
+//             row.hours = 8;
+//             row.cost = 4000;
+//             row.status = "Pending";
 
-            frm.refresh_field("projects");
+//             frm.refresh_field("projects");
 
-        });
+//         });
 
-    }
-});
+//     }
+// });
 
 frappe.ui.form.on("Client_Script", {
     refresh(frm) {
@@ -396,3 +396,127 @@ frappe.ui.form.on("Client_Script", {
 
     }
 });
+
+frappe.ui.form.on("Client_Script", {
+    refresh(frm) {
+
+        frm.add_custom_button("Remove All Projects", function () {
+
+            frappe.confirm(
+                "Are you sure you want to remove all projects?",
+                function () {
+
+                    frm.clear_table("projects");
+
+                    frm.refresh_field("projects");
+
+                }
+            );
+
+        });
+
+    }
+});
+
+frappe.ui.form.on("Client_Script", {
+
+    salary(frm) {
+        frm.trigger("calculate_total_salary");
+    },
+
+    bonus(frm) {
+        frm.trigger("calculate_total_salary");
+    },
+
+    calculate_total_salary(frm) {
+
+        frm.set_value(
+            "total_salary",
+            (frm.doc.salary || 0) + (frm.doc.bonus || 0)
+        );
+
+    }
+
+});
+
+
+frappe.ui.form.on("Client_Script", {
+
+    refresh(frm) {
+
+        frm.add_custom_button("Activate", function () {
+
+            frm.call("activate_employee")
+                    
+
+        });
+
+    }
+
+});
+
+frappe.ui.form.on("Client_Script", {
+
+    refresh(frm) {
+
+        frm.add_custom_button("Add Default Project", function () {
+
+            frm.add_child("projects", {
+                project_name: "ERP",
+                status: "Pending"
+            });
+
+            // frm.refresh_field("projects");
+
+            frm.save();
+
+        });
+
+    }
+
+});
+
+frappe.ui.form.on("Client_Script", {
+
+    refresh(frm) {
+
+        frm.add_custom_button("Reload Document", function () {
+
+            if (frm.is_dirty()) {
+
+                frappe.confirm(
+
+                    "You have unsaved changes. Continue?",
+
+                    function () {
+                        frm.reload_doc();
+                    }
+
+                );
+
+            } else {
+
+                frm.reload_doc();
+
+            }
+
+        });
+
+    }
+
+});
+
+frappe.ui.form.on("Client_Script", {
+
+    refresh(frm) {
+
+        if (frm.is_new()) {
+
+            frm.set_value("status", "Active");
+
+        }
+
+    }
+
+});
+
