@@ -258,3 +258,100 @@ export_python_type_annotations = True
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 bench_commands = "practice_app.commands:commands"
+
+
+# hooks
+
+app_include_js = "/assets/practice_app/js/app.js"
+
+app_include_css = "/assets/practice_app/css/app.css"
+
+web_include_js = "/assets/practice_app/js/app-web.js"
+web_include_css = "/assets/practice_app/css/app-web.css"
+
+webform_include_js = {
+    "Job Application": "public/js/custom_job_application.js"
+}
+
+webform_include_css = {
+    "Job Application": "public/css/custom_job_application.css"
+}
+
+page_js = {
+    "background_jobs": "public/js/custom_background_jobs.js"
+}
+
+# sounds = [
+#     {
+#         "name": "ping",
+#         "src": "/assets/practice_app/sounds/ping.mp3",
+#         "volume": 0.2
+#     }
+# ]
+
+before_migrate = "practice_app.migrate.before_migrate"
+
+after_migrate = "practice_app.migrate.after_migrate"
+
+after_build = "practice_app.build.after_build"
+
+# before_tests = "practice_app.tests.test_setup.before_tests"
+
+# before_write_file = "practice_app.overrides.file.before_write"
+write_file = "practice_app.overrides.file.write_file"
+# delete_file_data_content = "practice_app.overrides.file.delete_file"
+
+# get_sender_details = "practice_app.overrides.email.get_sender_details"
+# override_email_send = "practice_app.overrides.email.send"
+
+extend_bootinfo = "practice_app.boot.boot_session"
+
+website_context = {
+    "favicon": "/assets/practice_app/images/favicon.png",
+    "company_name": "Practice School"
+}
+update_website_context = "practice_app.overrides.website_context.website_context"
+
+extend_website_page_controller_context = {
+    "frappe.www.404": "practice_app.pages.context_404"
+} 
+
+website_catch_all="404"
+
+# website_path_resolver = "practice_app.practice_app.utils.path_resolver.custom_resolver"
+
+website_route_rules = [
+    {
+        "from_route": "/job_application/<name>",
+        "to_route": "job_application"
+    }
+]
+
+website_redirects = [
+    {
+        "source": "/job_application",
+        "target": "/test"
+    }
+]
+
+website_clear_cache = "practice_app.overrides.website.clear_website_cache"
+
+# home_page = "homepage"
+
+portal_menu_items = [
+    {
+        "title": "Dashboard",
+        "route": "/dashboard",
+        "role": "Website User"
+    },
+    {
+        "title": "Courses",
+        "route": "/courses",
+        "role": "Website User"
+    },
+    {
+        "title": "Attendance",
+        "route": "/attendance",
+        "role": "Website User"
+    }
+]

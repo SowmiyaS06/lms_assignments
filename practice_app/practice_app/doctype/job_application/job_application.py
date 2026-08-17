@@ -3,6 +3,7 @@
 
 import frappe
 from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
 
 
 class JobApplication(Document):
@@ -140,12 +141,12 @@ class JobApplication(Document):
 #     doc.check_permission("write")
 #     frappe.msgprint("You have Write Permission")
 
-# @frappe.whitelist()
-# def get_application_title(docname):
-#     doc = frappe.get_doc("Job Application", docname)
-#     title = doc.get_title()
-#     frappe.msgprint(str(title))
-#     return title
+@frappe.whitelist()
+def get_application_title(docname):
+    doc = frappe.get_doc("Job Application", docname)
+    title = doc.get_title()
+    frappe.msgprint(str(title))
+    return title
 
 # @frappe.whitelist()
 # def update_status(docname):
@@ -205,3 +206,16 @@ class JobApplication(Document):
     #         self.add_tag("Experienced")
     #     frappe.msgprint(str(self.get_tags()))
 
+# import frappe
+
+# def get_context(context):
+#     application_name = context.route.split("/")[-1]
+
+#     context.application = frappe.get_doc(
+#         "Job Application",
+#         applicant_name
+#     )
+
+@frappe.whitelist()
+def get_student(name):
+    return frappe.get_doc("Job Application", name)

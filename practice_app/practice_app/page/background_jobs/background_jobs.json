@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2026-08-10 13:56:29.716835",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2026-08-10 13:56:29.716835",
+ "modified_by": "Administrator",
+ "module": "Practice App",
+ "name": "background_jobs",
+ "owner": "Administrator",
+ "page_name": "background_jobs",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Background Jobs"
+}

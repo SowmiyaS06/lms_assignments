@@ -88,25 +88,25 @@
 //     }
 // });
 
-// frappe.ui.form.on("Job Application", {
-//     refresh(frm) {
+frappe.ui.form.on("Job Application", {
+    refresh(frm) {
 
-//         frm.add_custom_button("Get Title", function () {
+        frm.add_custom_button("Get Title", function () {
 
-//             frappe.call({
-//                 method: "practice_app.practice_app.doctype.job_application.job_application.get_application_title",
-//                 args: {
-//                     docname: frm.doc.name
-//                 },
-//                 callback: function(r) {
-//                     frappe.msgprint("Title: " + r.message);
-//                 }
-//             });
+            frappe.call({
+                method: "practice_app.practice_app.doctype.job_application.job_application.get_application_title",
+                args: {
+                    docname: frm.doc.name
+                },
+                callback: function(r) {
+                    frappe.msgprint("Title: " + r.message);
+                }
+            });
 
-//         });
+        });
 
-//     }
-// });
+    }
+});
 
 // frappe.ui.form.on("Job Application", {
 //     refresh(frm) {
@@ -223,47 +223,47 @@
 //     }
 // });
 
-//custom utilities
-frappe.ui.form.on("Job Application", {
-refresh(frm) {
-        console.log(frappe.get_route());
-    }
-});
+// custom utilities
+// frappe.ui.form.on("Job Application", {
+// refresh(frm) {
+//         console.log(frappe.get_route());
+//     }
+// });
 
-frappe.ui.form.on("Job Application", {
-    refresh(frm) {
-        frm.add_custom_button("Go to Applicants", () => {
-            frappe.set_route("List","Client_Script","List");
-            // frappe.set_route([part1,part2,part3],
-            // {
-            //     fieldname: "value"
-            // }
-            // );
-            //frappe.set_route(part1,part2,part3)
-            //part1-form,list,query-report,report,dashboard-view,workspace
-            //part2-names of part1
-            //part3-may be document name or the types of views(list,kanban,report...)
-        });
-    }
-});
+// frappe.ui.form.on("Job Application", {
+//     refresh(frm) {
+//         frm.add_custom_button("Go to Applicants", () => {
+//             frappe.set_route("List","Client_Script","List");
+//             // frappe.set_route([part1,part2,part3],
+//             // {
+//             //     fieldname: "value"
+//             // }
+//             // );
+//             //frappe.set_route(part1,part2,part3)
+//             //part1-form,list,query-report,report,dashboard-view,workspace
+//             //part2-names of part1
+//             //part3-may be document name or the types of views(list,kanban,report...)
+//         });
+//     }
+// });
 
-frappe.ui.form.on("Job Application", {
-    refresh(frm) {
-        let formatted = frappe.format(
-            frm.doc.expected_salary,
-            { fieldtype: "Currency"}
-        );
-        console.log(formatted);
-        let formatted_date = frappe.format(
-    frm.doc.interview_date,
-    {
-        fieldtype: "Date"
-    }
-);
+// frappe.ui.form.on("Job Application", {
+//     refresh(frm) {
+//         let formatted = frappe.format(
+//             frm.doc.expected_salary,
+//             { fieldtype: "Currency"}
+//         );
+//         console.log(formatted);
+//         let formatted_date = frappe.format(
+//     frm.doc.interview_date,
+//     {
+//         fieldtype: "Date"
+//     }
+// );
 
-console.log(formatted_date);
-    }
-});
+// console.log(formatted_date);
+//     }
+// });
 // Fieldtype	Raw Value	Formatted Output
 // Date	"2026-08-05"	05-08-2026 (or your configured date format)
 // Datetime	"2026-08-05 14:30:00"	05-08-2026 02:30 PM
@@ -301,3 +301,242 @@ console.log(formatted_date);
 // frappe.student.utils.sayHello = function () {
 //     console.log("Hello");
 // };
+
+// dialog api
+// frappe.ui.form.on("Job Application", {
+//     refresh(frm) {
+//         frm.add_custom_button("Apply Job", function () {
+//         let d = new frappe.ui.Dialog({
+//         title: "Job Application",
+//         fields: [
+//                     {
+//                         label: "Applicant Name",
+//                         fieldname: "applicant_name",
+//                         fieldtype: "Data",
+//                         reqd: 1
+//                     },
+//                     {
+//                         label: "Email",
+//                         fieldname: "email",
+//                         fieldtype: "Data",
+//                         reqd: 1
+//                     },
+//                     {
+//                         label: "Phone",
+//                         fieldname: "phone",
+//                         fieldtype: "Phone"
+//                     },
+//                     {
+//                         label: "Position",
+//                         fieldname: "position_applied",
+//                         fieldtype: "Select",
+//                         options: [
+//                             "Software Engineer",
+//                             "Frontend Developer",
+//                             "Backend Developer",
+//                             "Full Stack Developer",
+//                             "Python Developer",
+//                             "Frappe Developer",
+//                             "Java Developer",
+//                             "QA Engineer",
+//                             "DevOps Engineer",
+//                             "UI/UX Designer",
+//                             "Data Analyst",
+//                             "AI/ML Engineer",
+//                             "Intern"
+//                         ].join("\n"),
+//                         reqd: 1
+//                     },
+//                     {
+//                         label: "Experience",
+//                         fieldname: "experience",
+//                         fieldtype: "Float"
+//                     },
+//                     {
+//                         label: "Expected Salary",
+//                         fieldname: "expected_salary",
+//                         fieldtype: "Currency"
+//                     },
+//                     {
+//     label: "Application Date",
+//     fieldname: "application_date",
+//     fieldtype: "Date",
+//     default: frappe.datetime.get_today()
+// }
+//                 ],
+//                 size: "small",
+//                 primary_action_label: "Submit",
+//                 primary_action(values) {
+//                     if (values.expected_salary < 10000) {
+//     frappe.msgprint({
+//         title: "Invalid Salary",
+//         indicator: "red",
+//         message: "Expected salary should be at least ₹10,000"
+//     });
+//     return;
+// }
+//         console.log(values);
+//             frappe.msgprint({
+//                 title: "Application Submitted",
+//                 indicator: "green",
+//                 message: `
+//                     <b>Applicant :</b> ${frm.doc.applicant_name}<br>
+//                     <b>Position :</b> ${frm.doc.position_applied}<br>
+//                     <b>Status :</b> ${frm.doc.status}
+//                 `});
+//                     d.hide();}
+//             });
+//             d.show();
+
+//         });
+
+//     }
+
+// });
+
+frappe.ui.form.on("Job Application", {
+
+    refresh(frm) {
+
+        frm.add_custom_button("Applicant Prompt", function () {
+
+            frappe.prompt(
+                "Applicant Name",
+
+                ({ value }) => {
+
+                    console.log(value);
+
+                    frappe.msgprint(
+                        "Applicant : " + value
+                    );
+
+                }
+            );
+
+        });
+
+    }
+
+});
+frappe.ui.form.on("Job Application", {
+
+    refresh(frm) {
+
+        frm.add_custom_button("Reject Applicant", function () {
+
+            frappe.confirm(
+
+                `Are you sure you want to reject
+                <b>${frm.doc.applicant_name}</b>?`,
+
+                function () {
+
+                    frappe.msgprint({
+                        title: "Applicant Rejected",
+                        indicator: "red",
+                        message:
+                        `${frm.doc.applicant_name} has been rejected.`
+                    });
+
+                },
+
+                function () {
+
+                    frappe.msgprint({
+                        title: "Cancelled",
+                        indicator: "blue",
+                        message:
+                        "No changes were made."
+                    });
+
+                }
+
+            );
+
+        });
+
+    }
+
+});
+
+frappe.ui.form.on("Job Application", {
+    refresh(frm) {
+        frm.add_custom_button("Process", () => {
+
+       let current = 0;
+
+let interval = setInterval(() => {
+
+    current++;
+
+    frappe.show_progress(
+
+        "Uploading Resumes",
+
+        current,
+
+        10,
+
+        `Uploading Resume ${current}`
+
+    );
+
+    if (current === 10) {
+
+        clearInterval(interval);
+
+        frappe.show_alert({
+            message: "Upload Completed",
+            indicator: "green"
+        }, 5);
+    }
+}, 100);
+        });
+    }
+});
+
+frappe.ui.form.on("Job Application", {
+
+    refresh(frm) {
+
+        frm.add_custom_button("New Applicant", () => {
+
+            frappe.new_doc("Job Application");
+
+        });
+
+    }
+
+});
+
+// frappe.call({
+//     method: "practice_app.api.get_student",
+//     args: {
+//         name: "435"
+//     }
+// }).then(r => {
+//     console.log(r.message);
+// });
+
+// frappe.ui.form.on("Job Application",{
+//     refresh(frm){
+//         frm.add_custom_button("Change Status",()=>{
+//             frm.set_value("status","Selected");
+//             frappe.msgprint("Status changed to Selected");
+//         })
+//         frm.refresh_field("status");
+//     }
+// })
+
+frappe.ui.form.on("Job Application",{
+    refresh(frm){
+        if(frm.doc.status=="Draft"){
+            frm.add_custom_button("Apply",()=>{
+                frm.set_value("status","Applied");
+                frappe.msgprint("Employee status changed to applied");
+            })
+        }
+        frm.refresh_field("status");
+    }
+})
