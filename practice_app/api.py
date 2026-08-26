@@ -16,6 +16,7 @@ def custom_logic(doc,method=None):
 
 
 # lms assignment Document API, Database API, Query Builder & REST API
+# lms Realtime & Logging
 # --------------------------------------------------------------------------------------------
 @frappe.whitelist()
 def job_application_assignment():
