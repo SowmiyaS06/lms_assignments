@@ -260,6 +260,14 @@ export_python_type_annotations = True
 bench_commands = "practice_app.commands:commands"
 
 
+# ======================================================================================
+# LMS Assignment
+doc_events={
+"Test Document":{
+    "validate":"practice_app.api.custom_logic"
+}
+}
+# ======================================================================================
 
 
 

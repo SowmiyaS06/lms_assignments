@@ -5,6 +5,13 @@ from frappe.query_builder.functions import Count,Sum,Avg,Min,Max
 from pypika import CustomFunction
 
 
+# ============================================================================================
+# LMS assignment Hooks (hooks.py), Hooks & Controllers (Python)
+
+def custom_logic(doc,method=None):
+    frappe.msgprint("Hook executed!")
+
+# ============================================================================================
 
 
 
