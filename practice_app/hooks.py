@@ -260,6 +260,10 @@ export_python_type_annotations = True
 bench_commands = "practice_app.commands:commands"
 
 
+
+
+
+
 # hooks
 
 app_include_js = "/assets/practice_app/js/app.js"
@@ -311,7 +315,7 @@ website_context = {
     "company_name": "Practice School"
 }
 update_website_context = "practice_app.overrides.website_context.website_context"
-
+    
 extend_website_page_controller_context = {
     "frappe.www.404": "practice_app.pages.context_404"
 } 
@@ -341,17 +345,102 @@ website_clear_cache = "practice_app.overrides.website.clear_website_cache"
 portal_menu_items = [
     {
         "title": "Dashboard",
-        "route": "/dashboard",
-        "role": "Website User"
+        "route": "/dashboard"
     },
     {
         "title": "Courses",
-        "route": "/courses",
-        "role": "Website User"
+        "route": "/courses"
     },
     {
         "title": "Attendance",
-        "route": "/attendance",
-        "role": "Website User"
+        "route": "/attendance"
     }
 ]
+
+brand_html = '<div>Practice School</div>'
+
+
+# base_template = "practice_app/templates/my_custom_base.html"
+braintree_success_page = "practice_app.integrations.braintree_success_page"
+
+# calendars = ["Attendance"]
+
+clear_cache = "practice_app.cache.clear_cache"
+
+default_mail_footer = """
+<div>
+    Sent via <strong>Practice School</strong>
+</div>
+"""
+
+on_login = "practice_app.overrides.login.successful_login"
+
+on_session_creation = "practice_app.overrides.login.session_created"
+
+on_logout = "practice_app.overrides.login.user_logged_out"
+
+auth_hooks = [
+    "practice_app.overrides.auth.validate_custom_auth"
+]
+
+# filters can also be applied for this fixtures
+# bench --site school.local export-fixtures
+fixtures = [
+    "Job Application"
+]
+
+permission_query_conditions={
+    "Job Application":"practice_app.permissions.permission_query"
+}
+
+# frappe.has_permission("Job Application", doc=doc, ptype="write")
+has_permission = {
+    "Job Application": "practice_app.permissions.job_application_has_permission"
+}
+
+doctype_js = {
+    "ToDo": "public/js/todo.js"
+}
+
+# doc_events = {
+#     "ToDo": {
+#         "before_insert": "practice_app.crud_events.todo_before_insert",
+#         "after_insert": "practice_app.crud_events.todo_after_insert",
+#         "on_update": "practice_app.crud_events.todo_on_update",
+#         "on_trash": "practice_app.crud_events.todo_on_trash"
+#     }
+# }
+
+doctype_list_js = {
+    "ToDo": "public/js/todo_list.js"
+}
+
+ignore_links_on_delete = ["Applicant Skill"] 
+# simply tells Frappe not to block the <doctype> deletion because that ToDo has a link to it.
+
+# scheduler_events = {
+#     "cron":{
+#     "*/2 * * * *": [
+#         "practice_app.scheduled_tasks.my_hourly_task"
+#     ]
+#     }
+# }
+
+# additional_timeline_content = {
+#     "Job Application": [
+#         "practice_app.timeline.job_application_timeline"
+#     ]
+# }
+
+# extend_doctype_class = {
+#     "Job Application": [
+#         "practice_app.extensions.job_application.JobApplicationMixin"
+#     ]
+# }
+
+override_doctype_class = {
+    "Job Application":
+        "practice_app.overrides.job_application.CustomJobApplication"
+}
+
+

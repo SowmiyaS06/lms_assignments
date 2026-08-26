@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class ApplicantSkill(Document):
+class TestDocument(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,9 +14,7 @@ class ApplicantSkill(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		experience: DF.Float
-		rating: DF.Rating
-		skill: DF.Data | None
+		description: DF.Text | None
 	# end: auto-generated types
 
 	pass
