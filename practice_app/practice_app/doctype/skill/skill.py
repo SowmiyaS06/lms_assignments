@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class JobOpening(Document):
+class Skill(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,7 +14,9 @@ class JobOpening(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-
+		active: DF.Check
+		category: DF.Literal["Programming", "Database", "Frontend", "Other"]
+		skill_name: DF.Data | None
 	# end: auto-generated types
 
 	pass

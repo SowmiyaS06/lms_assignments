@@ -5,7 +5,7 @@
 from frappe.model.document import Document
 
 
-class TestDocument(Document):
+class Admission(Document):
 	# begin: auto-generated types
 	# This code is auto-generated. Do not modify anything in this block.
 
@@ -14,11 +14,15 @@ class TestDocument(Document):
 	if TYPE_CHECKING:
 		from frappe.types import DF
 
-		description: DF.Text | None
+		admission_date: DF.Date | None
+		amended_from: DF.Link | None
+		course: DF.Link | None
+		fees: DF.Currency
+		has_scholarship: DF.Check
+		scholarship_amount: DF.Currency
+		statu: DF.Literal["Pending", "Approved", "Rejected"]
+		student: DF.Link | None
+		workflow_state: DF.Literal["Pending", "Approved", "Rejected"]
 	# end: auto-generated types
 
 	pass
-
-	def before_save(self):
-		if not self.description:
-			self.description="Default Description"

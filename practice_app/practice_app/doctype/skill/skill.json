@@ -2,25 +2,40 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
- "creation": "2026-08-17 12:35:43.477109",
+ "creation": "2026-09-03 12:56:28.821082",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_whwt"
+  "skill_name",
+  "category",
+  "active"
  ],
  "fields": [
   {
-   "fieldname": "section_break_whwt",
-   "fieldtype": "Section Break"
+   "fieldname": "skill_name",
+   "fieldtype": "Data",
+   "label": "Skill Name"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Select",
+   "label": "Category",
+   "options": "Programming\nDatabase\nFrontend\nOther"
+  },
+  {
+   "default": "0",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-17 12:35:43.477109",
+ "modified": "2026-09-03 12:57:05.248297",
  "modified_by": "Administrator",
  "module": "Practice App",
- "name": "Job Opening",
+ "name": "Skill",
  "owner": "Administrator",
  "permissions": [
   {

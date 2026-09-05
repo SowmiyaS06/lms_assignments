@@ -540,3 +540,27 @@ frappe.ui.form.on("Job Application",{
         frm.refresh_field("status");
     }
 })
+
+
+let dialog=new frappe.ui.Dialog({
+title:'Enter Applicant Name:',
+fields:[
+    {
+        label:'Applicant Name',
+        fieldname: 'applicant_name',
+        fieldtype: 'Data',
+        reqd: 1
+    }
+],
+primary_action_label: 'Continue',
+primary_action(values){
+    const applicant_name=values.applicant_name;
+    dialog.hide();
+    frappe.route_options={
+        applicant_name:applicant_name
+    };
+    frappe.new_doc('Job Application');
+}
+
+});
+dialog.show();

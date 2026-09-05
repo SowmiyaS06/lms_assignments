@@ -65,7 +65,7 @@
   },
   {
    "bold": 1,
-   "fetch_from": "vehicle.brand",
+   "fetch_from": "vehicle.brands",
    "fieldname": "brand",
    "fieldtype": "Data",
    "label": "Brand"
@@ -139,7 +139,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-29 10:38:40.348728",
+ "modified": "2026-08-27 13:41:55.534199",
  "modified_by": "Administrator",
  "module": "Practice App",
  "name": "Vehicle Service",
