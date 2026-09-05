@@ -3,6 +3,7 @@ import frappe
 from pypika.enums import Order
 from frappe.query_builder.functions import Count,Sum,Avg,Min,Max
 from pypika import CustomFunction
+from frappe.rate_limiter import rate_limit
 
 
 # ============================================================================================
@@ -73,6 +74,18 @@ def job_application_assignment():
         )
     return result
 # --------------------------------------------------------------------------------------------
+
+
+#lms assignment others
+#---------------------------------------------------------------------------------------------
+@frappe.whitelist(allow_guest=True)
+@rate_limit(limit=5, seconds=60)
+def limited_greeting():
+    logger = frappe.logger()
+    logger.info("Endpoint called.")
+
+    frappe.response["message"] = "Hello, Rate Limited World!"
+#---------------------------------------------------------------------------------------------
 
 
 # http://127.0.0.1:8000/api/method/practice_app.api.test_get_list
