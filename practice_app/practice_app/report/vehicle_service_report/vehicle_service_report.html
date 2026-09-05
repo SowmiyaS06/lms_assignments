@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 class="text-center">Vehicle Service Report</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Vehicle</th>
+                <th>Service Type</th>
+                <th>Mechanic</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% for (var i = 0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i].vehicle %></td>
+                    <td><%= data[i].service_type %></td>
+                    <td><%= data[i].mechanic %></td>
+                    <td><%= format_money(data[i].amount) %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
