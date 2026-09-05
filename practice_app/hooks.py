@@ -404,9 +404,9 @@ auth_hooks = [
 
 # filters can also be applied for this fixtures
 # bench --site school.local export-fixtures
-fixtures = [
-    "Job Application"
-]
+# fixtures = [
+#     "Job Application"
+# ]
 
 permission_query_conditions={
     "Job Application":"practice_app.permissions.permission_query"
@@ -461,5 +461,8 @@ override_doctype_class = {
     "Job Application":
         "practice_app.overrides.job_application.CustomJobApplication"
 }
+
+
+fixtures = ["Client Script"]
 
 
